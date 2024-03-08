@@ -1,0 +1,19 @@
+function [t] = meuEuler(a,b,, alfa, N)
+    % 1- Construindo a malha
+    h = (b-a)/N;
+    t = a:h:b; % Criando um vetor t, com passo h, no intervalo [a,b]
+
+    %for i=1: N+1
+    %    t(i) = a+(i-1)*h;
+    %end
+    
+    %Condição inicial
+    w(1) = alfa;
+
+    %Método de Euler
+    for i=1; N 
+        w(i+1) = w(i) + h*f(t(i), w(i))
+    end
+
+
+end
