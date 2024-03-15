@@ -1,0 +1,28 @@
+function [t, w] = meuEuler(a,b, alfa, N)
+    %  ------ Encontra a solução numérica do PVI ----------
+    %  y' = f(t,y), a <= t <= b, y(a)= alfta
+    % usando o método de Euler
+
+    % 1- Construindo a malha
+    h = (b-a)/N;
+    t = a:h:b; % Criando um vetor t, com passo h, no intervalo [a,b]
+    
+    w=zeros(1, N+1);
+    % Condição inicial
+    w(1) = alfa;
+
+    %Método de Euler
+    for i=1: N 
+        w(i+1) = w(i) + h*f(t(i), w(i));
+    end
+
+    %Cálculo erro absoluto
+    for i=1: N 
+        w(i+1) = w(i) + h*f(t(i), w(i));
+    end
+
+
+    %Imprimindo o plot
+    plot(t,w, 'ro'); hold on; fplot(y, [a,b], 'b-'); hold off;
+
+end
