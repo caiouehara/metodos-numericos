@@ -110,6 +110,25 @@ def runge_kutta4(f, y0, h, a, b):
         t_vetor.append(t_discreto)
     return t_vetor, y_vetor
 
+def runge_kutta_ex3(f, y0, h, a, b):
+    #Passo 0: Iniciar os vetores t_vetor, y_vetor
+    t_vetor = [a]
+    y_vetor = [y0]
+    
+    ##Passo 1: Cálcular o número N de repetições
+    N = int((b-a)/h)
+    
+    ##Passo 2: Cálcular K (depende de k1,k2,k3,k4)
+    for m in range(N):
+        t_discreto = t_vetor[m] + h
+        
+        #Método de Passo Único :: y_(n+1) = y_n + h*k
+        y_discreto = y_vetor[m] + h*1/(4) * ( f(t_vetor[m], y_vetor[m]) + 3*f(t_vetor[m]+2/(3)*h, y_vetor[m]+2/(3)*h*f(t_vetor[m],y_vetor[m])) )
+        
+        y_vetor.append(y_discreto)
+        t_vetor.append(t_discreto)
+    return t_vetor, y_vetor
+
 ##Sistemas EDO de 2x2
 def rk4_passo_2por2(f, g, t, x, y, h):
     #PVI :: x' = f(t, x, y) e y' = g(t, x, y)
