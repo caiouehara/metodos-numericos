@@ -36,7 +36,7 @@ end
 
 %linha 2 até N-1
 mat(N-1,N-2)=-1-(h^2)*p(x(N));
-mat(N-1,N-1)=-2-2*(h^2)*q(x(N));
+mat(N-1,N-1)=-2-(h^2)*q(x(N));
 vet(N-1)=(h^2)*r(x(N))-(1-(h/2))*p(x((N)))*beta;
 
 mat
